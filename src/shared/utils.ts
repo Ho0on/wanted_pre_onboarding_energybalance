@@ -1,8 +1,4 @@
-interface Idata {
-  productName: string;
-  brand: string;
-  both: string;
-}
+import Idata from './types';
 
 export const formattingString = (string: string) => {
   const newString = string.replaceAll(' ', '').toLowerCase();
@@ -20,14 +16,14 @@ export const orderingData = (data: Idata[]) => {
 export const filteringBrandList = (data: Idata[]) => {
   const result: string[] = [];
 
-  const brandList = data.reduce((acc: any, current: any) => {
-    acc.findIndex(({ brand }: { brand: any }) => brand === current.brand) ===
+  const brandList = data.reduce((acc: Idata[], current: Idata) => {
+    acc.findIndex(({ brand }: { brand: string }) => brand === current.brand) ===
       -1 && acc.push(current);
 
     return acc;
   }, []);
 
-  brandList.map((el: any) => {
+  brandList.map((el: Idata) => {
     return result.push(el.brand);
   });
 

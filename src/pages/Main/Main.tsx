@@ -3,17 +3,12 @@ import {
   formattingString,
   orderingData,
   filteringBrandList,
-} from '../../utils';
+} from '../../shared/utils';
+import Idata from '../../shared/types';
 import Nav from '../../components/Nav/Nav';
 import Selectbox from '../../components/Checkbox/Selectbox';
 import SearchResult from '../../components/SearchResult/SearchResult';
 import * as S from './Main.style';
-
-interface Idata {
-  productName: string;
-  brand: string;
-  both: string;
-}
 
 const Main = () => {
   const [data, setData] = useState<Idata[]>([]);
@@ -42,16 +37,20 @@ const Main = () => {
   };
 
   const onClickSubmit = () => {
-    const filteredData = resultData.filter(product => {
+    const filteredData = data.filter(product => {
       const newProductName = formattingString(product.both);
       const newInput = formattingString(searchInput);
 
       return newProductName.includes(newInput);
     });
+    // console.log(brandFilteredData);
+
     setResultData(filteredData);
   };
 
-  const brandListData = filteringBrandList(data);
+  const brandListData = filteringBrandList(resultData);
+
+  // console.log(resultData);
 
   return (
     <S.MainSection>
@@ -60,7 +59,6 @@ const Main = () => {
           <S.Logo src="/images/logo.png" />
         </S.LogoSection>
         <Nav />
-
         <S.ContentsSection>
           <S.Title>상품검색</S.Title>
           <S.SearchSection>
@@ -68,15 +66,21 @@ const Main = () => {
             <S.SearchBar type="text" onChange={handleInput} />
             <S.SearchBtn onClick={onClickSubmit}>검색하기</S.SearchBtn>
           </S.SearchSection>
-          <S.DetailSearchSection>
-            <S.DetailSearchText>상세검색</S.DetailSearchText>
-            <S.DetailSearchBox>
-              <S.DetailSearchCategory>브랜드</S.DetailSearchCategory>
-              <S.DetailSearchContents>
-                <Selectbox data={brandListData} />
-              </S.DetailSearchContents>
-            </S.DetailSearchBox>
-          </S.DetailSearchSection>
+          {resultData.length !== data.length && (
+            <S.DetailSearchSection>
+              <S.DetailSearchText>상세검색</S.DetailSearchText>
+              <S.DetailSearchBox>
+                <S.DetailSearchCategory>브랜드</S.DetailSearchCategory>
+                <S.DetailSearchContents>
+                  <Selectbox
+                    data={brandListData}
+                    resultData={resultData}
+                    setResultData={setResultData}
+                  />
+                </S.DetailSearchContents>
+              </S.DetailSearchBox>
+            </S.DetailSearchSection>
+          )}
         </S.ContentsSection>
         {orderingData(resultData).map((el: Idata, idx: number) => {
           return (
