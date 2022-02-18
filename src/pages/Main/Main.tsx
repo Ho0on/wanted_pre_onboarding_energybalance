@@ -1,14 +1,15 @@
 import React, { useEffect, useState } from 'react';
-import { formattingString } from '../../utils';
+import { formattingString, orderingData } from '../../utils';
 import * as S from './Main.style';
 
 import Nav from '../../components/Nav/Nav';
 import Checkbox from '../../components/Checkbox/Checkbox';
 
+import Highlighter from 'react-highlight-words';
+
 interface Idata {
   productName: string;
-  brand?: string;
-  id: number;
+  brand: string;
 }
 
 function Main() {
@@ -30,8 +31,11 @@ function Main() {
 
   const filteredData = data.filter(product => {
     const newProductName = formattingString(product.productName);
+    const newBrand = formattingString(product.brand);
+
     const newInput = formattingString(searchInput);
-    return newProductName.includes(newInput);
+
+    return newProductName.includes(newInput) || newBrand.includes(newInput);
   });
 
   return (
@@ -59,11 +63,28 @@ function Main() {
           </S.DetailSearchSection>
         </S.ContentsSection>
         {data &&
-          filteredData.map((el: Idata) => {
+          orderingData(filteredData).map((el: Idata) => {
             return (
               <>
-                <div>{el.productName}</div>
-                <div>{el.brand}</div>
+                <div>
+                  <Highlighter
+                    highlightClassName="YourHighlightClass"
+                    searchWords={[searchInput]}
+                    autoEscape={true}
+                    textToHighlight={el.productName}
+                  />
+                </div>
+
+                {/* <div>{el.productName}</div> */}
+                <div>
+                  <Highlighter
+                    highlightClassName="YourHighlightClass"
+                    searchWords={[searchInput]}
+                    autoEscape={true}
+                    textToHighlight={el.brand}
+                  />
+                </div>
+                {/* <div>{el.brand}</div> */}
               </>
             );
           })}

@@ -1,7 +1,6 @@
 interface Idata {
   productName: string;
-  brand?: string;
-  id: number;
+  brand: string;
 }
 
 export const formattingString = (string: string) => {
@@ -10,18 +9,16 @@ export const formattingString = (string: string) => {
   return newString;
 };
 
-export const orderingData = (data: Idata[], str: string) => {
-  const dataWithStr = data.filter((el: Idata) => el.hasOwnProperty(str));
-  const dataWithoutStr = data.filter((el: Idata) => !el.hasOwnProperty(str));
+// export const orderingData = (data: Idata[], str: string) => {
+//   const dataWithStr = data.filter((el: Idata) => el.hasOwnProperty(str));
+//   const dataWithoutStr = data.filter((el: Idata) => !el.hasOwnProperty(str));
 
-  return [...dataWithStr, ...dataWithoutStr];
-};
-
-// export const orderingData = (data, mark) => {
-//   const dataCopied = [...data];
-//   const result = dataCopied.sort(
-//     (a, b) => b.mark.length - a.mark.length
-//   );
-//
-//   return result;
+//   return [...dataWithStr, ...dataWithoutStr];
 // };
+
+export const orderingData = (data: Idata[]) => {
+  const dataCopied = [...data];
+  const result = dataCopied.sort((a, b) => b.brand.length - a.brand.length);
+
+  return result;
+};
