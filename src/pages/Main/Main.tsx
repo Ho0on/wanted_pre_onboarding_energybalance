@@ -1,8 +1,17 @@
 import React, { useEffect, useState } from 'react';
 import * as S from './Main.style';
 
+export interface Idata {
+  id: number;
+  key: string;
+  productName: string;
+  brand: string;
+  both: object;
+  name: string;
+}
+
 function Main() {
-  const [data, setData] = useState();
+  const [data, setData] = useState([]);
 
   const getData = async () => {
     const json = await (await fetch('/data/mockData.json')).json();
@@ -12,8 +21,21 @@ function Main() {
   useEffect(() => {
     getData();
   }, []);
+  const filteringBrand = data.filter((el: Idata) =>
+    Object.keys(el).includes('brand')
+  );
 
-  console.log(data);
+  let newArr: any = [];
+
+  filteringBrand.forEach((el: Idata) => {
+    newArr.push({ name: `${el.productName}${el.brand}` });
+  });
+
+  useEffect(() => {
+    getData();
+  }, []);
+
+  console.log(newArr);
 
   return <div>Main</div>;
 }
