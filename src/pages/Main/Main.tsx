@@ -14,6 +14,7 @@ interface Idata {
 function Main() {
   const [data, setData] = useState<Idata[]>([]);
   const [searchInput, setSearchInput] = useState('');
+  const [resultData, setResultData] = useState<Idata[]>([]);
 
   const getData = async () => {
     const json = await (await fetch('/data/mockData.json')).json();
@@ -28,14 +29,16 @@ function Main() {
     setSearchInput(e.target.value);
   };
 
-  const filteredData = data.filter(product => {
-    const newProductName = formattingString(product.productName);
-    const newBrand = formattingString(product.brand);
+  const onClickSubmit = () => {
+    const filteredData = data.filter(product => {
+      const newProductName = formattingString(product.productName);
+      const newBrand = formattingString(product.brand);
+      const newInput = formattingString(searchInput);
 
-    const newInput = formattingString(searchInput);
-
-    return newProductName.includes(newInput) || newBrand.includes(newInput);
-  });
+      return newProductName.includes(newInput) || newBrand.includes(newInput);
+    });
+    setResultData(filteredData);
+  };
 
   return (
     <S.MainSection>
@@ -50,7 +53,7 @@ function Main() {
           <S.SearchSection>
             <S.SearchText>검색조건</S.SearchText>
             <S.SearchBar type="text" onChange={handleInput} />
-            <S.SearchBtn>검색하기</S.SearchBtn>
+            <S.SearchBtn onClick={onClickSubmit}>검색하기</S.SearchBtn>
           </S.SearchSection>
           <S.DetailSearchSection>
             <S.DetailSearchText>상세검색</S.DetailSearchText>
@@ -62,17 +65,19 @@ function Main() {
             </S.DetailSearchBox>
           </S.DetailSearchSection>
         </S.ContentsSection>
-        {data &&
-          orderingData(filteredData).map((el: Idata, idx: number) => {
-            return (
-              <SearchResult
-                key={idx}
-                productName={el.productName}
-                brand={el.brand}
-                input={searchInput}
-              />
-            );
-          })}
+        {(resultData.length === 0
+          ? orderingData(data)
+          : orderingData(resultData)
+        ).map((el: Idata, idx: number) => {
+          return (
+            <SearchResult
+              key={idx}
+              productName={el.productName}
+              brand={el.brand}
+              input={searchInput}
+            />
+          );
+        })}
       </S.MainBox>
     </S.MainSection>
   );
