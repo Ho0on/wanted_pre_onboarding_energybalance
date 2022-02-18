@@ -27,6 +27,7 @@ export const ResultSection = styled.div`
   }
 
   @media screen and (max-width: 640px) {
+    margin-bottom: 0;
     border: none;
   }
 `;
@@ -52,9 +53,6 @@ export const CategoryInfoText = styled.div`
 
 export const ProductCategory = styled.p`
   ${categoryFontStyle}
-
-  @media screen and (max-width: 640px) {
-  }
 `;
 
 export const ResultFont = styled.p`

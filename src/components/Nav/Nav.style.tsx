@@ -25,7 +25,8 @@ export const NavSection = styled.div`
 
   @media screen and (max-width: 640px) {
     /* position: static; */
-    width: 640px;
+    width: 100%;
+    height: 100%;
     padding: 6px 10px;
   }
 `;
