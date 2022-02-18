@@ -2,6 +2,17 @@ import React, { useEffect, useState } from 'react';
 import { formattingString, orderingData } from '../../utils';
 import * as S from './Main.style';
 
+export interface Idata {
+  id: number;
+  key: string;
+  productName: string;
+  brand: string;
+  both: object;
+  name: string;
+}
+
+function Main() {
+  const [data, setData] = useState([]);
 import Nav from '../../components/Nav/Nav';
 import Selectbox from '../../components/Checkbox/Selectbox';
 import SearchResult from '../../components/SearchResult/SearchResult';
@@ -24,7 +35,21 @@ function Main() {
   useEffect(() => {
     getData();
   }, []);
+  const filteringBrand = data.filter((el: Idata) =>
+    Object.keys(el).includes('brand')
+  );
 
+  let newArr: any = [];
+
+  filteringBrand.forEach((el: Idata) => {
+    newArr.push({ name: `${el.productName}${el.brand}` });
+  });
+
+  useEffect(() => {
+    getData();
+  }, []);
+
+  console.log(newArr);
   const handleInput = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearchInput(e.target.value);
   };
