@@ -62,7 +62,7 @@
 1. 파일 클론 받기
 
 ```
-git clone 
+git clone https://github.com/cotton-cotton/wanted_pre_onboarding_energybalance.git
 ```
 
 2. 패키지 설치
