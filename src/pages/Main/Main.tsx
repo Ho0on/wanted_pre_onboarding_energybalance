@@ -6,8 +6,6 @@ import Nav from '../../components/Nav/Nav';
 import Selectbox from '../../components/Checkbox/Selectbox';
 import SearchResult from '../../components/SearchResult/SearchResult';
 
-import Highlighter from 'react-highlight-words';
-
 interface Idata {
   productName: string;
   brand: string;
@@ -64,32 +62,15 @@ function Main() {
             </S.DetailSearchBox>
           </S.DetailSearchSection>
         </S.ContentsSection>
-
-        {/* <SearchResult /> */}
         {data &&
-          orderingData(filteredData).map((el: Idata) => {
+          orderingData(filteredData).map((el: Idata, idx: number) => {
             return (
-              <>
-                <div>
-                  <Highlighter
-                    highlightClassName="YourHighlightClass"
-                    searchWords={[searchInput]}
-                    autoEscape={true}
-                    textToHighlight={el.productName}
-                  />
-                </div>
-                {/* <div>{el.productName}</div> */}
-                <div>
-                  <Highlighter
-                    highlightClassName="YourHighlightClass"
-                    searchWords={[searchInput]}
-                    autoEscape={true}
-                    textToHighlight={el.brand}
-                  />
-                </div>
-                {/* <div>{el.brand}</div> */}
-                {/* <SearchResult productName={el.productName} brand={el.brand} /> */}
-              </>
+              <SearchResult
+                key={idx}
+                productName={el.productName}
+                brand={el.brand}
+                input={searchInput}
+              />
             );
           })}
       </S.MainBox>
