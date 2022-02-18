@@ -1,6 +1,7 @@
 interface Idata {
   productName: string;
   brand: string;
+  both: string;
 }
 
 export const formattingString = (string: string) => {
