@@ -1,15 +1,16 @@
 import React, { useEffect, useState } from 'react';
-import { formattingString } from '../../utils';
+import { formattingString, orderingData } from '../../utils';
 import * as S from './Main.style';
 
 import Nav from '../../components/Nav/Nav';
 import Selectbox from '../../components/Checkbox/Selectbox';
 import SearchResult from '../../components/SearchResult/SearchResult';
 
+import Highlighter from 'react-highlight-words';
+
 interface Idata {
   productName: string;
-  brand?: string;
-  id: number;
+  brand: string;
 }
 
 function Main() {
@@ -31,8 +32,11 @@ function Main() {
 
   const filteredData = data.filter(product => {
     const newProductName = formattingString(product.productName);
+    const newBrand = formattingString(product.brand);
+
     const newInput = formattingString(searchInput);
-    return newProductName.includes(newInput);
+
+    return newProductName.includes(newInput) || newBrand.includes(newInput);
   });
 
   return (
@@ -63,12 +67,28 @@ function Main() {
 
         {/* <SearchResult /> */}
         {data &&
-          filteredData.map((el: Idata) => {
+          orderingData(filteredData).map((el: Idata) => {
             return (
               <>
-                <SearchResult productName={el.productName} brand={el.brand} />
-                {/* <div>{el.productName}</div>
-              <div>{el.brand}</div> */}
+                <div>
+                  <Highlighter
+                    highlightClassName="YourHighlightClass"
+                    searchWords={[searchInput]}
+                    autoEscape={true}
+                    textToHighlight={el.productName}
+                  />
+                </div>
+                {/* <div>{el.productName}</div> */}
+                <div>
+                  <Highlighter
+                    highlightClassName="YourHighlightClass"
+                    searchWords={[searchInput]}
+                    autoEscape={true}
+                    textToHighlight={el.brand}
+                  />
+                </div>
+                {/* <div>{el.brand}</div> */}
+                {/* <SearchResult productName={el.productName} brand={el.brand} /> */}
               </>
             );
           })}
