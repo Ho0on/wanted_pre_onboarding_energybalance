@@ -12,20 +12,14 @@ export const MainSection = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 1240px;
-  margin: 0 auto;
-  padding: 0px 20px;
+  width: 100%;
   background-color: white;
-
-  @media screen and (max-width: 640px) {
-    width: 100%;
-    height: 100%;
-    padding: 0;
-  }
 `;
 
 export const MainBox = styled.div`
   width: 1240px;
+  margin: 0 auto;
+  padding: 20px;
 
   @media screen and (max-width: 640px) {
     width: 100%;
@@ -60,12 +54,7 @@ export const ContentsSection = styled.div`
   flex-direction: column;
   align-items: center;
   padding-top: 100px;
-  padding-bottom: 100px;
-
-  @media screen and (max-width: 640px) {
-    padding-top: 20px;
-    padding-bottom: 20px;
-  }
+  padding-bottom: 50px;
 `;
 
 export const Title = styled.div`
@@ -73,17 +62,13 @@ export const Title = styled.div`
   font-size: 28px;
   font-weight: 600;
   letter-spacing: -1.2px;
-
-  @media screen and (max-width: 640px) {
-    display: none;
-  }
 `;
 
 export const SearchSection = styled.div`
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
+  width: 100%;
   align-items: center;
-  width: 800px;
 
   @media screen and (max-width: 640px) {
     display: flex;
@@ -97,7 +82,7 @@ export const SearchSection = styled.div`
 export const SearchText = styled.div`
   ${contentsFontsSize}
   ${letterSpacing}
-  width: 100px;
+  margin-right: 20px;
   font-weight: 600;
 
   @media screen and (max-width: 640px) {
