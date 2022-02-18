@@ -1,35 +1,26 @@
 import React from 'react';
 import * as S from './SearchResult.style';
 
-function SearchResult() {
+interface SearchResultTypes {
+  productName: any;
+  brand: any;
+}
+
+function SearchResult({ productName, brand }: SearchResultTypes) {
   return (
-    <>
-      <S.Container>
-        <S.ResultSection>
-          <S.ProductName>제품명: 비타민 비타민</S.ProductName>
-          <S.Brand>브랜드: 풀무원 풀무원</S.Brand>
-        </S.ResultSection>
-      </S.Container>
-      {/* */}
-      <S.Container>
-        <S.ResultSection>
-          <S.ProductName>제품명: 비타민 비타민</S.ProductName>
-          <S.Brand>브랜드: 풀무원 풀무원</S.Brand>
-        </S.ResultSection>
-      </S.Container>
-      <S.Container>
-        <S.ResultSection>
-          <S.ProductName>제품명: 비타민 비타민</S.ProductName>
-          <S.Brand>브랜드: 풀무원 풀무원</S.Brand>
-        </S.ResultSection>
-      </S.Container>
-      <S.Container>
-        <S.ResultSection>
-          <S.ProductName>제품명: 비타민 비타민</S.ProductName>
-          <S.Brand>브랜드: 풀무원 풀무원</S.Brand>
-        </S.ResultSection>
-      </S.Container>
-    </>
+    <S.ResultSection>
+      <S.PillImg src="/images/pill-orange.png" />
+      <S.ProductInfo>
+        <S.CategoryInfoText>
+          <S.ProductCategory>제품명</S.ProductCategory>
+          <S.ResultFont>{productName}</S.ResultFont>
+        </S.CategoryInfoText>
+        <S.CategoryInfoText>
+          <S.ProductCategory>브랜드</S.ProductCategory>
+          <S.ResultFont>{brand}</S.ResultFont>
+        </S.CategoryInfoText>
+      </S.ProductInfo>
+    </S.ResultSection>
   );
 }
 

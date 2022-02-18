@@ -12,18 +12,23 @@ export const MainSection = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  width: 1240px;
   margin: 0 auto;
   padding: 0px 20px;
   background-color: white;
 
-  /* @media screen and (max-width: 640px) {
+  @media screen and (max-width: 640px) {
     width: 640px;
-    background-color: red;
-  } */
+    padding: 0;
+  }
 `;
 
 export const MainBox = styled.div`
-  max-width: 1240px;
+  width: 1240px;
+
+  @media screen and (max-width: 640px) {
+    width: 640px;
+  }
 `;
 
 export const LogoSection = styled.div`
@@ -31,11 +36,21 @@ export const LogoSection = styled.div`
   justify-content: center;
   align-items: center;
   height: 100px;
+
+  @media screen and (max-width: 640px) {
+    height: 60px;
+  }
 `;
+
 export const Logo = styled.img`
   width: 105px;
   height: 30px;
   cursor: pointer;
+
+  @media screen and (max-width: 640px) {
+    width: 88px;
+    height: 25px;
+  }
 `;
 
 export const ContentsSection = styled.div`
@@ -44,12 +59,22 @@ export const ContentsSection = styled.div`
   align-items: center;
   padding-top: 100px;
   padding-bottom: 100px;
+
+  @media screen and (max-width: 640px) {
+    padding-top: 20px;
+    padding-bottom: 20px;
+  }
 `;
+
 export const Title = styled.div`
   margin-bottom: 50px;
   font-size: 28px;
   font-weight: 600;
   letter-spacing: -1.2px;
+
+  @media screen and (max-width: 640px) {
+    display: none;
+  }
 `;
 
 export const SearchSection = styled.div`
@@ -57,12 +82,25 @@ export const SearchSection = styled.div`
   justify-content: space-between;
   align-items: center;
   width: 800px;
+
+  @media screen and (max-width: 640px) {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 40px;
+    width: 600px;
+  }
 `;
+
 export const SearchText = styled.div`
   ${contentsFontsSize}
   ${letterSpacing}
   width: 100px;
   font-weight: 600;
+
+  @media screen and (max-width: 640px) {
+    display: none;
+  }
 `;
 export const SearchBar = styled.input`
   ${contentsFontsSize}
@@ -72,6 +110,11 @@ export const SearchBar = styled.input`
   margin-right: 10px;
   border: solid 2px #ff9c00;
   border-radius: 5px;
+
+  @media screen and (max-width: 640px) {
+    height: 35px;
+    margin-right: 5px;
+  }
 `;
 
 export const SearchBtn = styled.button`
@@ -84,6 +127,11 @@ export const SearchBtn = styled.button`
   background-color: #ff9c00;
   color: white;
   cursor: pointer;
+
+  @media screen and (max-width: 640px) {
+    width: 80px;
+    height: 36px;
+  }
 `;
 
 export const DetailSearchSection = styled.div`
@@ -92,7 +140,15 @@ export const DetailSearchSection = styled.div`
   align-items: center;
   width: 800px;
   margin-top: 30px;
+
+  @media screen and (max-width: 640px) {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 600px;
+  }
 `;
+
 export const DetailSearchText = styled.div`
   ${contentsFontsSize}
   ${letterSpacing}
@@ -101,12 +157,10 @@ export const DetailSearchText = styled.div`
   width: 100px;
   height: 45px;
   font-weight: 600;
-`;
 
-export const DetailSearchBox = styled.div`
-  display: flex;
-  align-items: center;
-  width: 90%;
+  @media screen and (max-width: 640px) {
+    display: none;
+  }
 `;
 
 export const DetailSearchCategory = styled.div`
@@ -121,7 +175,22 @@ export const DetailSearchCategory = styled.div`
   border-bottom-left-radius: 5px;
   background-color: #ff9c00;
   color: white;
+
+  @media screen and (max-width: 640px) {
+    display: none;
+  }
 `;
+
+export const DetailSearchBox = styled.div`
+  display: flex;
+  align-items: center;
+  width: 90%;
+
+  @media screen and (max-width: 640px) {
+    border-radius: 5px;
+  }
+`;
+
 export const DetailSearchContents = styled.div`
   display: flex;
   align-items: center;
@@ -132,4 +201,17 @@ export const DetailSearchContents = styled.div`
   border-top-right-radius: 5px;
   border-bottom-right-radius: 5px;
   background-color: #ededed;
+
+  @media screen and (max-width: 640px) {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: -20px;
+    margin-right: 2px;
+    margin-left: 3px;
+    padding: 0;
+    width: 100%;
+    height: 35px;
+    border-radius: 5px;
+  }
 `;

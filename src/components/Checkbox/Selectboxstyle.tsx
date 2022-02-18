@@ -8,9 +8,13 @@ export const BoxSection = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+
+  :after {
+    content: '';
+  }
 `;
 
-export const Checkbox = styled.select`
+export const SelectboxSection = styled.select`
   ${letterSpacing}
   width: 550px;
   height: 30px;
@@ -21,4 +25,11 @@ export const Checkbox = styled.select`
   background-color: #ededed;
   color: black;
   font-size: 14px;
+  cursor: pointer;
+
+  @media screen and (max-width: 640px) {
+    width: 530px;
+    margin: 0;
+    padding: 0;
+  }
 `;
