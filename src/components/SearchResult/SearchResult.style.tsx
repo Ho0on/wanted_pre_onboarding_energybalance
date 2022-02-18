@@ -16,7 +16,7 @@ const resultFontStyle = css`
 export const ResultSection = styled.div`
   display: flex;
   align-items: center;
-  width: 100%;
+  width: 90%;
   margin-bottom: 15px;
   padding: 10px;
   border: solid 2px #ff9c00;

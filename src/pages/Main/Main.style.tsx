@@ -67,7 +67,7 @@ export const Title = styled.div`
 export const SearchSection = styled.div`
   display: flex;
   justify-content: center;
-  width: 100%;
+  width: 90%;
   align-items: center;
 
   @media screen and (max-width: 640px) {
@@ -125,14 +125,15 @@ export const DetailSearchSection = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 800px;
-  margin-top: 30px;
+  width: 90%;
+  margin: 10px 0;
 
   @media screen and (max-width: 640px) {
     display: flex;
     justify-content: center;
     align-items: center;
     width: 600px;
+    margin: 30px 0;
   }
 `;
 
@@ -155,13 +156,13 @@ export const DetailSearchCategory = styled.div`
   ${letterSpacing}
   display: flex;
   align-items: center;
-  width: 120px;
   height: 45px;
-  padding-left: 10px;
+  padding: 0 10px;
   border-top-left-radius: 5px;
   border-bottom-left-radius: 5px;
   background-color: #ff9c00;
   color: white;
+  font-size: 0.825rem;
 
   @media screen and (max-width: 640px) {
     display: none;
@@ -181,9 +182,9 @@ export const DetailSearchBox = styled.div`
 export const DetailSearchContents = styled.div`
   display: flex;
   align-items: center;
-  width: 90%;
+  /* width: 90%; */
   height: 45px;
-  padding: 0 10px;
+  padding: 0 20px;
   /* border: solid 2px #ff9c00; */
   border-top-right-radius: 5px;
   border-bottom-right-radius: 5px;
