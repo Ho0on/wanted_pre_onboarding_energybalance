@@ -11,8 +11,8 @@ export const formattingString = (string: string) => {
 };
 
 export const orderingData = (data: Idata[], str: string) => {
-  const dataWithStr = data.filter((el: any) => el.hasOwnProperty(str));
-  const dataWithoutStr = data.filter((el: any) => !el.hasOwnProperty(str));
+  const dataWithStr = data.filter((el: Idata) => el.hasOwnProperty(str));
+  const dataWithoutStr = data.filter((el: Idata) => !el.hasOwnProperty(str));
 
   return [...dataWithStr, ...dataWithoutStr];
 };
