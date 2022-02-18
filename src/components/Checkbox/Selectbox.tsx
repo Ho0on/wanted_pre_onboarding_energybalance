@@ -1,11 +1,13 @@
 import React from 'react';
-import * as S from './Selectboxstyle';
+import * as S from './Selectbox.style';
 
-function Selectbox() {
+function Selectbox({ data }: { data: string[] }) {
   return (
     <S.BoxSection>
       <S.SelectboxSection>
-        <option value="brand">브랜드1</option>
+        {data.map((el: string, idx: number) => {
+          return <option key={idx}>{el}</option>;
+        })}
       </S.SelectboxSection>
     </S.BoxSection>
   );

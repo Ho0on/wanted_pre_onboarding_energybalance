@@ -1,5 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import { formattingString, orderingData } from '../../utils';
+import {
+  formattingString,
+  orderingData,
+  filteringBrandList,
+} from '../../utils';
 import Nav from '../../components/Nav/Nav';
 import Selectbox from '../../components/Checkbox/Selectbox';
 import SearchResult from '../../components/SearchResult/SearchResult';
@@ -47,6 +51,8 @@ const Main = () => {
     setResultData(filteredData);
   };
 
+  const brandListData = filteringBrandList(data);
+
   return (
     <S.MainSection>
       <S.MainBox>
@@ -67,7 +73,7 @@ const Main = () => {
             <S.DetailSearchBox>
               <S.DetailSearchCategory>브랜드</S.DetailSearchCategory>
               <S.DetailSearchContents>
-                <Selectbox />
+                <Selectbox data={brandListData} />
               </S.DetailSearchContents>
             </S.DetailSearchBox>
           </S.DetailSearchSection>
