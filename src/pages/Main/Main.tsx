@@ -1,5 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import { formattingString, orderingData } from '../../utils';
+import {
+  formattingString,
+  orderingData,
+  filteringBrandList,
+} from '../../utils';
 import * as S from './Main.style';
 
 export interface Idata {
@@ -65,6 +69,8 @@ function Main() {
     setResultData(filteredData);
   };
 
+  const brandListData = filteringBrandList(data);
+
   return (
     <S.MainSection>
       <S.MainBox>
@@ -85,7 +91,7 @@ function Main() {
             <S.DetailSearchBox>
               <S.DetailSearchCategory>브랜드</S.DetailSearchCategory>
               <S.DetailSearchContents>
-                <Selectbox />
+                <Selectbox data={brandListData} />
               </S.DetailSearchContents>
             </S.DetailSearchBox>
           </S.DetailSearchSection>
