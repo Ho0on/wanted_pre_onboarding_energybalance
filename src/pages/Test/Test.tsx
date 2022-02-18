@@ -1,10 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import * as S from './Test.style';
 
-interface Idata {
-  productName: string;
-  brand?: string;
+export interface Idata {
   id: number;
+  key: string;
+  productName: string;
+  brand: string;
+  both: object;
+  name: string;
 }
 
 function Test() {
@@ -18,9 +21,15 @@ function Test() {
   useEffect(() => {
     getData();
   }, []);
+  const filteringBrand = data.filter((el: Idata) =>
+    Object.keys(el).includes('brand')
+  );
 
-  console.log(data);
+  let newArr: any = [];
 
+  filteringBrand.forEach((el: Idata) => {
+    newArr.push({ name: `${el.productName}${el.brand}` });
+  });
   return (
     <div>
       <input type="text" />
