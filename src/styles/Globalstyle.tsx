@@ -3,10 +3,16 @@ import reset from 'styled-reset';
 
 const GlobalStyle = createGlobalStyle`
   ${reset}
-  * {
+  * {    
     box-sizing: border-box;
+
+    @media screen and (max-width: 640px) {
+    &::-webkit-scrollbar {
+    display: none;
+      }
+    }
   }
-  
+   
   input:focus {
     outline: none;
   }

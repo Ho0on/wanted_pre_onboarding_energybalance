@@ -18,7 +18,8 @@ export const MainSection = styled.div`
   background-color: white;
 
   @media screen and (max-width: 640px) {
-    width: 640px;
+    width: 100%;
+    height: 100%;
     padding: 0;
   }
 `;
@@ -27,7 +28,8 @@ export const MainBox = styled.div`
   width: 1240px;
 
   @media screen and (max-width: 640px) {
-    width: 640px;
+    width: 100%;
+    height: 100%;
   }
 `;
 
