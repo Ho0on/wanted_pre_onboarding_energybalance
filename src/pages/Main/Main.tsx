@@ -5,7 +5,6 @@ import {
   filteringBrandList,
 } from '../../shared/utils';
 import Idata from '../../shared/types';
-import Nav from '../../components/Nav/Nav';
 import Selectbox from '../../components/Checkbox/Selectbox';
 import SearchResult from '../../components/SearchResult/SearchResult';
 import * as S from './Main.style';
@@ -43,14 +42,17 @@ const Main = () => {
 
       return newProductName.includes(newInput);
     });
-    // console.log(brandFilteredData);
 
     setResultData(filteredData);
   };
 
-  const brandListData = filteringBrandList(resultData);
+  const handleEnterPress = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (searchInput.length > 0 && e.key === 'Enter') {
+      onClickSubmit();
+    }
+  };
 
-  // console.log(resultData);
+  const brandListData = filteringBrandList(resultData);
 
   return (
     <S.MainSection>
@@ -58,12 +60,16 @@ const Main = () => {
         <S.LogoSection>
           <S.Logo src="/images/logo.png" />
         </S.LogoSection>
-        <Nav />
         <S.ContentsSection>
           <S.Title>상품검색</S.Title>
           <S.SearchSection>
             <S.SearchText>검색조건</S.SearchText>
-            <S.SearchBar type="text" onChange={handleInput} />
+            <S.SearchBar
+              type="text"
+              onChange={handleInput}
+              onKeyPress={handleEnterPress}
+              placeholder="상품명을 입력해주세요."
+            />
             <S.SearchBtn onClick={onClickSubmit}>검색하기</S.SearchBtn>
           </S.SearchSection>
           {resultData.length !== data.length && (
@@ -82,16 +88,20 @@ const Main = () => {
             </S.DetailSearchSection>
           )}
         </S.ContentsSection>
-        {orderingData(resultData).map((el: Idata, idx: number) => {
-          return (
-            <SearchResult
-              key={idx}
-              productName={el.productName}
-              brand={el.brand}
-              input={searchInput}
-            />
-          );
-        })}
+        {resultData.length !== data.length ? (
+          orderingData(resultData).map((el: Idata, idx: number) => {
+            return (
+              <SearchResult
+                key={idx}
+                productName={el.productName}
+                brand={el.brand}
+                input={searchInput}
+              />
+            );
+          })
+        ) : (
+          <S.TextWrapper>상품을 검색해주세요.</S.TextWrapper>
+        )}
       </S.MainBox>
     </S.MainSection>
   );

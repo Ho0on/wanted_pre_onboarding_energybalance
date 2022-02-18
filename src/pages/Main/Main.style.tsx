@@ -217,3 +217,10 @@ export const DetailSearchContents = styled.div`
     border-radius: 5px;
   }
 `;
+
+export const TextWrapper = styled.div`
+  margin-top: 50px;
+  font-size: 20px;
+  font-weight: 600;
+  letter-spacing: -1.2px;
+`;
