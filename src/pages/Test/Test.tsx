@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { formattingString } from '../../utils';
 import * as S from './Test.style';
 
 interface Idata {
@@ -8,7 +9,8 @@ interface Idata {
 }
 
 function Test() {
-  const [data, setData] = useState([]);
+  const [data, setData] = useState<Idata[]>([]);
+  const [searchInput, setSearchInput] = useState('');
 
   const getData = async () => {
     const json = await (await fetch('/data/mockData.json')).json();
@@ -19,13 +21,21 @@ function Test() {
     getData();
   }, []);
 
-  console.log(data);
+  const handleInput = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setSearchInput(e.target.value);
+  };
+
+  const filteredData = data.filter(product => {
+    const newProductName = formattingString(product.productName);
+    const newInput = formattingString(searchInput);
+    return newProductName.includes(newInput);
+  });
 
   return (
     <div>
-      <input type="text" />
+      <input type="text" onChange={handleInput} />
       {data &&
-        data.map((el: any) => {
+        filteredData.map((el: Idata) => {
           return (
             <>
               <div>{el.productName}</div>
