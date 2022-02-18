@@ -4,6 +4,12 @@ interface Idata {
   id: number;
 }
 
+export const formattingString = (string: string) => {
+  const newString = string.replaceAll(' ', '').toLowerCase();
+
+  return newString;
+};
+
 export const orderingData = (data: Idata[], str: string) => {
   const dataWithStr = data.filter((el: any) => el.hasOwnProperty(str));
   const dataWithoutStr = data.filter((el: any) => !el.hasOwnProperty(str));
