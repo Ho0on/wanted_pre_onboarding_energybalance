@@ -34,6 +34,7 @@ export const ListText = styled.div`
   ${letterSpacing}
   margin-left: 20px;
   font-weight: 600;
+  cursor: pointer;
 `;
 
 export const NavRight = styled.div`

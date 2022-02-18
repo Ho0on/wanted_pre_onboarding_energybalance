@@ -8,11 +8,11 @@ import Test from './pages/Test/Test';
 ReactDOM.render(
   <React.StrictMode>
     <GlobalStyle />
-    {/* 
-   <Main /> 
-   <Footer />
-  */}
-    <Test />
+
+    <Main />
+    <Footer />
+
+    {/*  <Test />*/}
   </React.StrictMode>,
   document.getElementById('root')
 );

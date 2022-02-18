@@ -11,7 +11,9 @@ function Header() {
         <S.ListIcon>
           <BsList size="30" />
         </S.ListIcon>
-        <S.ListText>분석&nbsp; 추천&nbsp; 비교</S.ListText>
+        <S.ListText>분석</S.ListText>
+        <S.ListText>추천</S.ListText>
+        <S.ListText>추천</S.ListText>
       </S.NavLeft>
       <S.NavRight>
         <S.NavSearchBox>

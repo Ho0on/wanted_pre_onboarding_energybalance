@@ -6,16 +6,19 @@ const letterSpacing = css`
 
 export const BoxSection = styled.div`
   display: flex;
+  justify-content: center;
   align-items: center;
-  padding: 0 10px;
 `;
 
-export const Checkbox = styled.input`
-  width: 16px;
-  height: 16px;
-`;
-
-export const BrandName = styled.div`
+export const Checkbox = styled.select`
   ${letterSpacing}
+  width: 550px;
+  height: 30px;
+  margin-left: 9px;
+  padding: 0 5px;
+  border: none;
+  border-radius: 5px;
+  background-color: #ededed;
+  color: black;
   font-size: 14px;
 `;

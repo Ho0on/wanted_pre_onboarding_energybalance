@@ -3,6 +3,7 @@ import * as S from './Main.style';
 
 import Nav from '../../components/Nav/Nav';
 import Checkbox from '../../components/Checkbox/Checkbox';
+import SearchResult from '../../components/SearchResult/SearchResult';
 
 function Main() {
   const [data, setData] = useState();
@@ -42,6 +43,7 @@ function Main() {
             </S.DetailSearchBox>
           </S.DetailSearchSection>
         </S.ContentsSection>
+        <SearchResult />
       </S.MainBox>
     </S.MainSection>
   );
