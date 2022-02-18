@@ -63,7 +63,7 @@ const Main = () => {
         <S.ContentsSection>
           <S.Title>상품검색</S.Title>
           <S.SearchSection>
-            <S.SearchText>검색조건</S.SearchText>
+            <S.SearchText>검색</S.SearchText>
             <S.SearchBar
               type="text"
               onChange={handleInput}
