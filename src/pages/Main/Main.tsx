@@ -46,6 +46,11 @@ const Main = () => {
     setResultData(filteredData);
   };
 
+  const onClickReset = () => {
+    setSearchInput('');
+    setResultData(data);
+  };
+
   const handleEnterPress = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (searchInput.length > 0 && e.key === 'Enter') {
       onClickSubmit();
@@ -69,10 +74,15 @@ const Main = () => {
               onChange={handleInput}
               onKeyPress={handleEnterPress}
               placeholder="상품명을 입력해주세요."
+              value={searchInput}
             />
-            <S.SearchBtn onClick={onClickSubmit}>검색하기</S.SearchBtn>
+            {resultData.length !== 0 ? (
+              <S.SearchBtn onClick={onClickSubmit}>검색하기</S.SearchBtn>
+            ) : (
+              <S.SearchBtn onClick={onClickReset}>초기화</S.SearchBtn>
+            )}
           </S.SearchSection>
-          {resultData.length !== data.length && (
+          {resultData.length !== data.length && resultData.length !== 0 && (
             <S.DetailSearchSection>
               <S.DetailSearchText>상세검색</S.DetailSearchText>
               <S.DetailSearchBox>
@@ -87,21 +97,24 @@ const Main = () => {
               </S.DetailSearchBox>
             </S.DetailSearchSection>
           )}
+          {resultData.length !== data.length ? (
+            orderingData(resultData).map((el: Idata, idx: number) => {
+              return (
+                <SearchResult
+                  key={idx}
+                  productName={el.productName}
+                  brand={el.brand}
+                  input={searchInput}
+                />
+              );
+            })
+          ) : (
+            <S.TextWrapper>상품을 검색해주세요.</S.TextWrapper>
+          )}
+          {resultData.length === 0 && (
+            <S.TextWrapper>조건에 맞는 상품이 없습니다.</S.TextWrapper>
+          )}
         </S.ContentsSection>
-        {resultData.length !== data.length ? (
-          orderingData(resultData).map((el: Idata, idx: number) => {
-            return (
-              <SearchResult
-                key={idx}
-                productName={el.productName}
-                brand={el.brand}
-                input={searchInput}
-              />
-            );
-          })
-        ) : (
-          <S.TextWrapper>상품을 검색해주세요.</S.TextWrapper>
-        )}
       </S.MainBox>
     </S.MainSection>
   );
