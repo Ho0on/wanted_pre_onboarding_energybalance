@@ -9,7 +9,7 @@
 
 ## 🚀 배포 주소
 
-[🔗 데모 링크](http://wantedpreonboardingenergybalance.s3-website.ap-northeast-2.amazonaws.com/)
+[🔗 데모 링크](http://wantedpreonboardingenergybalance.s3-website.ap-northeast-2.amazonaws.com)
 
 ## 🥑 과제 개요
 
