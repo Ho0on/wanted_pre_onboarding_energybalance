@@ -3,7 +3,8 @@ import { formattingString } from '../../utils';
 import * as S from './Main.style';
 
 import Nav from '../../components/Nav/Nav';
-import Checkbox from '../../components/Checkbox/Checkbox';
+import Selectbox from '../../components/Checkbox/Selectbox';
+import SearchResult from '../../components/SearchResult/SearchResult';
 
 interface Idata {
   productName: string;
@@ -41,6 +42,7 @@ function Main() {
           <S.Logo src="/images/logo.png" />
         </S.LogoSection>
         <Nav />
+
         <S.ContentsSection>
           <S.Title>상품검색</S.Title>
           <S.SearchSection>
@@ -53,17 +55,20 @@ function Main() {
             <S.DetailSearchBox>
               <S.DetailSearchCategory>브랜드</S.DetailSearchCategory>
               <S.DetailSearchContents>
-                <Checkbox />
+                <Selectbox />
               </S.DetailSearchContents>
             </S.DetailSearchBox>
           </S.DetailSearchSection>
         </S.ContentsSection>
+
+        {/* <SearchResult /> */}
         {data &&
           filteredData.map((el: Idata) => {
             return (
               <>
-                <div>{el.productName}</div>
-                <div>{el.brand}</div>
+                <SearchResult productName={el.productName} brand={el.brand} />
+                {/* <div>{el.productName}</div>
+              <div>{el.brand}</div> */}
               </>
             );
           })}
