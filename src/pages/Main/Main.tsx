@@ -3,7 +3,8 @@ import { formattingString, orderingData } from '../../utils';
 import * as S from './Main.style';
 
 import Nav from '../../components/Nav/Nav';
-import Checkbox from '../../components/Checkbox/Checkbox';
+import Selectbox from '../../components/Checkbox/Selectbox';
+import SearchResult from '../../components/SearchResult/SearchResult';
 
 import Highlighter from 'react-highlight-words';
 
@@ -45,6 +46,7 @@ function Main() {
           <S.Logo src="/images/logo.png" />
         </S.LogoSection>
         <Nav />
+
         <S.ContentsSection>
           <S.Title>상품검색</S.Title>
           <S.SearchSection>
@@ -57,11 +59,13 @@ function Main() {
             <S.DetailSearchBox>
               <S.DetailSearchCategory>브랜드</S.DetailSearchCategory>
               <S.DetailSearchContents>
-                <Checkbox />
+                <Selectbox />
               </S.DetailSearchContents>
             </S.DetailSearchBox>
           </S.DetailSearchSection>
         </S.ContentsSection>
+
+        {/* <SearchResult /> */}
         {data &&
           orderingData(filteredData).map((el: Idata) => {
             return (
@@ -74,7 +78,6 @@ function Main() {
                     textToHighlight={el.productName}
                   />
                 </div>
-
                 {/* <div>{el.productName}</div> */}
                 <div>
                   <Highlighter
@@ -85,6 +88,7 @@ function Main() {
                   />
                 </div>
                 {/* <div>{el.brand}</div> */}
+                {/* <SearchResult productName={el.productName} brand={el.brand} /> */}
               </>
             );
           })}
