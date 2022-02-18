@@ -1,28 +1,17 @@
 import React, { useEffect, useState } from 'react';
 import { formattingString, orderingData } from '../../utils';
-import * as S from './Main.style';
-
-export interface Idata {
-  id: number;
-  key: string;
-  productName: string;
-  brand: string;
-  both: object;
-  name: string;
-}
-
-function Main() {
-  const [data, setData] = useState([]);
 import Nav from '../../components/Nav/Nav';
 import Selectbox from '../../components/Checkbox/Selectbox';
 import SearchResult from '../../components/SearchResult/SearchResult';
+import * as S from './Main.style';
 
 interface Idata {
   productName: string;
   brand: string;
+  both: string;
 }
 
-function Main() {
+const Main = () => {
   const [data, setData] = useState<Idata[]>([]);
   const [searchInput, setSearchInput] = useState('');
   const [resultData, setResultData] = useState<Idata[]>([]);
@@ -35,32 +24,25 @@ function Main() {
   useEffect(() => {
     getData();
   }, []);
-  const filteringBrand = data.filter((el: Idata) =>
-    Object.keys(el).includes('brand')
-  );
-
-  let newArr: any = [];
-
-  filteringBrand.forEach((el: Idata) => {
-    newArr.push({ name: `${el.productName}${el.brand}` });
-  });
 
   useEffect(() => {
-    getData();
-  }, []);
+    const newArr = [...data];
+    newArr.map((el: Idata) => {
+      return (el.both = el.productName + el.brand);
+    });
+    setResultData(newArr);
+  }, [data]);
 
-  console.log(newArr);
   const handleInput = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearchInput(e.target.value);
   };
 
   const onClickSubmit = () => {
-    const filteredData = data.filter(product => {
-      const newProductName = formattingString(product.productName);
-      const newBrand = formattingString(product.brand);
+    const filteredData = resultData.filter(product => {
+      const newProductName = formattingString(product.both);
       const newInput = formattingString(searchInput);
 
-      return newProductName.includes(newInput) || newBrand.includes(newInput);
+      return newProductName.includes(newInput);
     });
     setResultData(filteredData);
   };
@@ -90,10 +72,7 @@ function Main() {
             </S.DetailSearchBox>
           </S.DetailSearchSection>
         </S.ContentsSection>
-        {(resultData.length === 0
-          ? orderingData(data)
-          : orderingData(resultData)
-        ).map((el: Idata, idx: number) => {
+        {orderingData(resultData).map((el: Idata, idx: number) => {
           return (
             <SearchResult
               key={idx}
@@ -106,6 +85,6 @@ function Main() {
       </S.MainBox>
     </S.MainSection>
   );
-}
+};
 
 export default Main;
