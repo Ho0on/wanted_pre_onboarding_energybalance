@@ -11,8 +11,6 @@
 
 [🔗 데모 링크](http://wantedpreonboardingenergybalance.s3-website.ap-northeast-2.amazonaws.com/)
 
-## 🖥 구현 영상
-
 ## 🥑 과제 개요
 
 - 영양제 제품을 소비자가 찾고자 하는 키워드를 입력하였을 때 제품을 우선순위에 맞게 노출시킴
