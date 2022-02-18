@@ -1,5 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import { formattingString, orderingData } from '../../utils';
+import {
+  formattingString,
+  orderingData,
+  filteringBrandList,
+} from '../../utils';
 import * as S from './Main.style';
 
 import Nav from '../../components/Nav/Nav';
@@ -37,6 +41,8 @@ function Main() {
     return newProductName.includes(newInput) || newBrand.includes(newInput);
   });
 
+  const brandListData = filteringBrandList(data);
+
   return (
     <S.MainSection>
       <S.MainBox>
@@ -57,7 +63,7 @@ function Main() {
             <S.DetailSearchBox>
               <S.DetailSearchCategory>브랜드</S.DetailSearchCategory>
               <S.DetailSearchContents>
-                <Selectbox />
+                <Selectbox data={brandListData} />
               </S.DetailSearchContents>
             </S.DetailSearchBox>
           </S.DetailSearchSection>
