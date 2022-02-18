@@ -97,23 +97,25 @@ const Main = () => {
               </S.DetailSearchBox>
             </S.DetailSearchSection>
           )}
-          {resultData.length !== data.length ? (
-            orderingData(resultData).map((el: Idata, idx: number) => {
-              return (
-                <SearchResult
-                  key={idx}
-                  productName={el.productName}
-                  brand={el.brand}
-                  input={searchInput}
-                />
-              );
-            })
-          ) : (
-            <S.TextWrapper>상품을 검색해주세요.</S.TextWrapper>
-          )}
-          {resultData.length === 0 && (
-            <S.TextWrapper>조건에 맞는 상품이 없습니다.</S.TextWrapper>
-          )}
+          <S.DataListWrap>
+            {resultData.length !== data.length ? (
+              orderingData(resultData).map((el: Idata, idx: number) => {
+                return (
+                  <SearchResult
+                    key={idx}
+                    productName={el.productName}
+                    brand={el.brand}
+                    input={searchInput}
+                  />
+                );
+              })
+            ) : (
+              <S.TextWrapper>상품을 검색해주세요.</S.TextWrapper>
+            )}
+            {resultData.length === 0 && (
+              <S.TextWrapper>조건에 맞는 상품이 없습니다.</S.TextWrapper>
+            )}
+          </S.DataListWrap>
         </S.ContentsSection>
       </S.MainBox>
     </S.MainSection>

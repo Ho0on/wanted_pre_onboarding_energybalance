@@ -5,7 +5,6 @@ export const FooterSection = styled.div`
   justify-content: center;
   align-items: center;
   min-width: 1050px;
-  margin-top: 100px;
   padding: 0px 20px;
   background-color: white;
   border-top: solid 1px #dedede;
