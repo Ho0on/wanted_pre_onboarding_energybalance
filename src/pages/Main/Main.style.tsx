@@ -156,7 +156,6 @@ export const DetailSearchCategory = styled.div`
   ${letterSpacing}
   display: flex;
   align-items: center;
-  /* width: 17vw; */
   height: 45px;
   padding: 0 10px;
   border-top-left-radius: 5px;
